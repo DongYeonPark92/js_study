@@ -2,14 +2,18 @@ const H1 = document.querySelector(".hello h1");
 console.log(H1);
 
 function handleH1Click() {
-    H1.style.color = "blue";
-    console.log("H1 was clicked!");
-}
+    const activeClassName = "clicked";
+    if (H1.className === activeClassName) {
+        H1.className = "active";
+    } else {
+        H1.className = activeClassName;
+    }
+};
 
 function mouseenter() {
     H1.innerText = "mouse is here!";
 }
-
+``
 function handleMouseleave() {
     H1.innerText = "mouse is gone";
 }
