@@ -1,47 +1,31 @@
-const H1 = document.querySelector(".hello h1");
-console.log(H1);
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
+ 
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
 
-function handleH1Click() {
-    const activeClassName = "clicked";
-    if (H1.className === activeClassName) {
-        H1.className = "active";
-    } else {
-        H1.className = activeClassName;
-    }
-};
+function onLoginSubmit(event) {
+    const username = loginInput.value;
 
-function mouseenter() {
-    H1.innerText = "mouse is here!";
-}
-``
-function handleMouseleave() {
-    H1.innerText = "mouse is gone";
+    event.preventDefault();
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    //greeting.innerText = "Hello " + username;
+    localStorage.setItem(USERNAME_KEY, username);
+    paintGreeting(username);
 }
 
-function handleWindowResize() {
-    document.body.style.backgroundColor = "tomato";   
+function paintGreeting(username) {
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
 }
+const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-function handleWindowCopy() {
-    alert("copier!")   
+if (savedUsername === null) {
+    //show the form
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+    //show the greeting
+    paintGreeting(savedUsername);
 }
-
-function handleWindowOffline() {
-    alert("SOS no WIFI!")   
-}
-
-function handleWindowOnline() {
-    alert("ALL GOOOOD!")   
-}
-
-H1.addEventListener("click", handleH1Click);
-H1.addEventListener("mouseenter", mouseenter);
-H1.addEventListener("mouseleave", handleMouseleave);
-
-window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy", handleWindowCopy);
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online", handleWindowOnline);
-
-//H1.onclick = handleH1Click
-console.dir(H1);

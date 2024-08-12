@@ -130,6 +130,22 @@ function handleWindowOnline() {
     alert("ALL Gooood!")   
 }
 
+const H1 = document.querySelector(".hello h1");
+console.log(H1);
+
+function handleH1Click() {
+    //아래 if절과 toggle은 같은 결과를 보여주지만 코드 양은 다르다.
+    //클릭시 H1 내 classname을 확인해서 없으면 추가하고 있으면 지우는 기능
+    // const activeClassName = "clicked";
+    // if (H1.classList.contains(activeClassName)) {
+    //     H1.classList.remove(activeClassName);
+    // } else {
+    //     H1.classList.add(activeClassName);
+    // }
+
+    H1.classList.toggle("clicked");
+};
+
 title.addEventListener("click", handleTitleClick);
 title.addEventListener("mouseenter", mouseenter);
 title.addEventListener("mouseleave", handleMouseleave);
