@@ -17,6 +17,16 @@
     margin-top: 250px;
     font-size: 30px;
     color: white;
+    border: none;
+}
+
+#login-form {
+    position: relative;
+    text-align: center;
+    left: 44%;
+    width: 300px;
+    margin-top: 250px;
+    font-size: 30px;
 }
 
 #todo-form {
